@@ -72,11 +72,11 @@ fetch('https://api.github.com/graphql', {
                     </div>
                     <div class="star">
                         <span class="star"></span>
-                        ${edge.node.stargazerCount === 0 ? "": edge.node.stargazerCount}
+                        ${edge.node.stargazerCount === 0 ? "": `<i class="far fa-star"></i> ${edge.node.stargazerCount}`}
                     </div>
                     <div class="forks">
                         <span class="forks"></span>
-                        ${edge.node.forkCount  === 0 ? "": edge.node.forkCount}
+                        ${edge.node.forkCount  === 0 ? "": `<i class="fas fa-code-branch"></i> ${edge.node.forkCount}`}
                     </div>
                     <div class="last-updated">
                        Updated on ${getDate(edge.node.pushedAt)}
@@ -85,7 +85,7 @@ fetch('https://api.github.com/graphql', {
             </div>
             <div class="star-repo">
                 <button>
-                    <span class="star"></span>
+                    <i class="far fa-star"></i>
                     Star
                 </button>
             </div>
