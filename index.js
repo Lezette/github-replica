@@ -27,7 +27,6 @@ const query = `{
     }
   }`;
 
-  const token = "5debeecd1d7cf5c2a2771759b1bc20ad0acf1a4a";
 fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
@@ -69,7 +68,7 @@ fetch('https://api.github.com/graphql', {
                 <div class="info">
                     <div class="language">
                         <span class="color" style="background: ${edge?.node?.languages?.edges[0]?.node?.color}"></span>
-                        ${edge.node.languages.edges[0].node.name}
+                        ${edge?.node?.languages?.edges[0]?.node?.name === undefined ? "" : edge?.node?.languages?.edges[0]?.node?.name}
                     </div>
                     <div class="star">
                         <span class="star"></span>
@@ -93,6 +92,9 @@ fetch('https://api.github.com/graphql', {
         </section>
             `;
         });
+    }).catch(err => {
+        repositories.innerHTML += 'Something Went wrong';
+        console.log('err', err)
     });
      
 
